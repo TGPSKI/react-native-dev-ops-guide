@@ -1,0 +1,1 @@
+export NODE_BINARY=$HOME/.nvm/versions/node/v8.11.3/bin/node
