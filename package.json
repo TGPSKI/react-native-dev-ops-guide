@@ -10,16 +10,16 @@
     "verbose": false,
     "shellPath": "/bin/zsh",
     "silentShell": true,
-    "programs": ["fastlane", "gem", "pod", "react-native", "badge", "match"],
+    "programs": ["fastlane", "gem", "pod", "react-native", "badge"],
     "versions": {
       "macOS": "10.13.6",
       "node": "v8.11.3",
-      "ruby": "2.3.1p112",
+      "ruby": "2.5.1p57",
       "xcode": "9.4.1",
       "yarn": "1.7.0",
-      "npm": "6.1.0"
+      "npm": "6.2.0"
     },
-    "envVars": ["ANDROID_SDK", "ANDROID_SDK_TOOLS", "ANDROID_PLATFORM_TOOLS"],
+    "envVars": ["ANDROID_HOME", "ANDROID_SDK_TOOLS", "ANDROID_PLATFORM_TOOLS"],
     "env": {
       "dir": "env",
       "buildTypes": ["dev", "staging", "release"]
@@ -30,13 +30,13 @@
       "files": ["yarn.lock"]
     },
     "android": {
-      "nodePath": true,
+      "nodePath": false,
       "gradle": true,
       "dirs": [],
-      "files": ["my-release-key.keystore"]
+      "files": []
     },
     "ios": {
-      "nodePath": true,
+      "nodePath": false,
       "nodePathDir": "env",
       "nodePathFilename": "node_binary",
       "pods": true,

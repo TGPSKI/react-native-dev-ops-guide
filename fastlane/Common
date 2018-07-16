@@ -1,0 +1,68 @@
+fastlane_require 'JSON'
+
+#################
+#################
+##### CONST #####
+#################
+#################
+
+@package_json_path = ''
+
+#####################
+#####################
+##### FUNCTIONS #####
+#####################
+#####################
+
+def debug_options(options, print)
+  # Prints out all options, useful for debugging w/ Jenkins
+
+  if print then
+    puts options.inspect
+  end
+end
+
+def copy_env_for_build_type(buildType)
+  # Copies env files to project root
+  # filename format: env.[buildType]
+  #
+  # example: $PROJECT_ROOT/env/env.release
+
+  dir = File.expand_path('..', Dir.pwd)
+  sh('cp', '%s/env/env.%s' % [dir, buildType], '%s/.env' % dir)
+end
+
+def handle_env_and_options(environment, options, isString=false, default=nil)
+  # Tristate selector - env vars, cli options, defaults
+  # Handles string and boolean types
+
+  output = nil
+  if isString == true
+    # Handle strings
+    if environment != nil
+      output = environment
+    elsif options != nil
+      output = options
+    elsif default != nil
+      output = default
+    else
+      output = nil
+    end
+  else
+    # Handle bools
+    if environment == true
+      output = true
+    elsif options == true
+      output = true
+    else
+      output = false
+    end
+  end
+  return output
+end
+
+#################
+#################
+##### LANES #####
+#################
+#################
