@@ -52,42 +52,54 @@ APP_BUILD_GRADLE_PATH = 'android/app/build.gradle'.freeze
 ######################
 ######################
 
-before_all do
-  yarn(
-    command: 'install',
-    package_path: './package.json'
-  )
+before_all do |lane, options|
 
-  if USES_COCOAPODS
-    cocoapods(
-      podfile: 'ios/Podfile',
-      use_bundle_exec: false
+  parsed_options = {
+    :skip_before => handle_env_and_options(
+      ENV['SKIP_BEFORE'],
+      options[:skip_before],
+      false,
+      false
     )
+  }
+
+  unless parsed_options[:skip_before]
+    yarn(
+      command: 'install',
+      package_path: './package.json'
+    )
+
+    if USES_COCOAPODS
+      cocoapods(
+        podfile: 'ios/Podfile',
+        use_bundle_exec: false
+      )
+    end
+
+    yarn(
+      command: 'checkmate',
+      package_path: './package.json'
+    )
+
+    ANDROID_VERSION_NAME = get_version_name(
+      gradle_file_path: APP_BUILD_GRADLE_PATH
+    )
+    ANDROID_VERSION_CODE = get_version_code(
+      gradle_file_path: APP_BUILD_GRADLE_PATH
+    )
+
+    IOS_VERSION_NUMBER = get_version_number(
+      xcodeproj: XCODE_PROJECT_PATH,
+      target: PROJECT_NAME
+    )
+    IOS_REVISION_NUMBER = get_build_number_from_plist(
+      xcodeproj: XCODE_PROJECT_PATH,
+      target: PROJECT_NAME
+    )
+
+    puts "Android: #{ANDROID_VERSION_NAME},#{ANDROID_VERSION_CODE} |" \
+         " iOS: #{IOS_VERSION_NUMBER},#{IOS_REVISION_NUMBER}"
   end
-
-  yarn(
-    command: 'checkmate',
-    package_path: './package.json'
-  )
-
-  ANDROID_VERSION_NAME = get_version_name(
-    gradle_file_path: APP_BUILD_GRADLE_PATH
-  )
-  ANDROID_VERSION_CODE = get_version_code(
-    gradle_file_path: APP_BUILD_GRADLE_PATH
-  )
-
-  IOS_VERSION_NUMBER = get_version_number(
-    xcodeproj: XCODE_PROJECT_PATH,
-    target: PROJECT_NAME
-  )
-  IOS_REVISION_NUMBER = get_build_number_from_plist(
-    xcodeproj: XCODE_PROJECT_PATH,
-    target: PROJECT_NAME
-  )
-
-  puts "Android: #{ANDROID_VERSION_NAME},#{ANDROID_VERSION_CODE} |" \
-       " iOS: #{IOS_VERSION_NUMBER},#{IOS_REVISION_NUMBER}"
 end
 
 desc 'Test lane'
