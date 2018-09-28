@@ -399,6 +399,7 @@ platform :android do
     debug_options(options, print_options)
     copy_env_for_build_type('staging')
 
+    # TODO
     parsed_options = {
       :badge => handle_env_and_options(
         ENV['BADGE'],
@@ -430,6 +431,7 @@ platform :android do
     debug_options(options, print_options)
     copy_env_for_build_type('release')
 
+    # TODO
     parsed_options = {
       :badge => handle_env_and_options(
         ENV['BADGE'],
