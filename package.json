@@ -10,7 +10,13 @@
     "verbose": false,
     "shellPath": "/bin/zsh",
     "silentShell": true,
-    "programs": ["fastlane", "gem", "pod", "react-native", "badge"],
+    "programs": [
+      "fastlane",
+      "gem",
+      "pod",
+      "react-native",
+      "badge"
+    ],
     "versions": {
       "macOS": "10.13.6",
       "node": "v8.11.3",
@@ -19,15 +25,27 @@
       "yarn": "1.7.0",
       "npm": "6.2.0"
     },
-    "envVars": ["ANDROID_HOME", "ANDROID_SDK_TOOLS", "ANDROID_PLATFORM_TOOLS"],
+    "envVars": [
+      "ANDROID_HOME",
+      "ANDROID_SDK_TOOLS",
+      "ANDROID_PLATFORM_TOOLS"
+    ],
     "env": {
       "dir": "env",
-      "buildTypes": ["dev", "staging", "release"]
+      "buildTypes": [
+        "dev",
+        "staging",
+        "release"
+      ]
     },
     "node": {
       "yarnIntegrity": true,
-      "dirs": ["node_modules"],
-      "files": ["yarn.lock"]
+      "dirs": [
+        "node_modules"
+      ],
+      "files": [
+        "yarn.lock"
+      ]
     },
     "android": {
       "nodePath": false,
@@ -48,7 +66,7 @@
     "@shoutem/theme": "^0.11.1",
     "@shoutem/ui": "^0.23.4",
     "bluebird": "^3.5.1",
-    "react": "16.4.1",
+    "react": "16.6.1",
     "react-native": "0.57",
     "react-native-animatable": "^1.3.0",
     "react-native-config": "https://github.com/patrickkempff/react-native-config.git",
@@ -65,15 +83,15 @@
     "seamless-immutable": "^7.1.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.52",
-    "@babel/preset-env": "^7.0.0-beta.52",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
     "babel-eslint": "^8.2.5",
     "babel-jest": "23.2.0",
     "babel-plugin-react-native-config": "^0.0.3",
-    "babel-preset-react-native": "^4.0.0",
     "eslint": "^5.1.0",
     "eslint-config-prettier": "^2.9.0",
     "jest": "23.3.0",
+    "metro-react-native-babel-preset": "^0.49.2",
     "prop-types": "^15.6.2",
     "react-native-checkmate": "^0.2.0",
     "react-test-renderer": "16.4.1",
