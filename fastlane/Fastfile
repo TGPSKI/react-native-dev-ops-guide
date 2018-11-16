@@ -50,7 +50,7 @@ AND_DEV_BUNDLE_ID_SUFFIX = 'dev'.freeze
 AND_DEV_BUILT_PPRODUCTS_PATH = "#{dir}/android/app/build/outputs/apk/debug/app-debug.apk".freeze
 
 AND_STAGING_BUNDLE_ID_SUFFIX = 'staging'.freeze
-AND_STAGING_BUILT_PPRODUCTS_PATH = "#{dir}/android/app/build/outputs/apk/staging/app-staging-unsigned.apk".freeze
+AND_STAGING_BUILT_PPRODUCTS_PATH = "#{dir}/android/app/build/outputs/apk/staging/app-staging.apk".freeze
 
 AND_RELEASE_BUILT_PPRODUCTS_PATH = "#{dir}/android/app/build/outputs/apk/release/app-release.apk".freeze
 
