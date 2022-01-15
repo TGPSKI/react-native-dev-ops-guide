@@ -97,7 +97,7 @@
     "react-test-renderer": "16.4.1",
     "remote-redux-devtools": "^0.5.12",
     "remotedev-server": "^0.2.4",
-    "shelljs": "^0.8.2"
+    "shelljs": "^0.8.5"
   },
   "jest": {
     "preset": "react-native"
